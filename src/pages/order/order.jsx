@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Banner from "../../components/banner";
 import Heading from "../../components/heading";
-import productData from "../../data/productData";
+import productData from "../../data/products";
+import theadData from '../../data/order/theadData.json';
 import './_order.scss';
 
 function Order() {
@@ -28,10 +29,10 @@ function Order() {
     useEffect(() => {
         let filtered = data.find(item => item.id == id);
         setActive(filtered);
-        setList(filtered.list);
+        setList(filtered.list && filtered.list);
         setTotal(filtered.price);
         setWaiter(filtered.waiter);
-        setTable(filtered.masa);
+        setTable(filtered.table);
         setSituation(filtered.situation);
         setSave(false);
         filtered.situation == "sonlanmayıb" && setDisabled(false);
@@ -90,7 +91,7 @@ function Order() {
     function handleSave() {
         const obj = {
             id: id,
-            masa: table,
+            table: table,
             waiter: waiter,
             situation: "sonlanmayıb",
             price: total,
@@ -113,7 +114,7 @@ function Order() {
         let mapingList = list.map(item => item && { ...item, back: true })
         const obj = {
             id: id,
-            masa: table,
+            table: table,
             waiter: waiter,
             situation: "sonlanıb",
             price: total,
@@ -183,17 +184,9 @@ function Order() {
                     <table className={"table my-5"}>
                         {list.length > 0 && (
                             <thead>
-                                <tr>
-                                    <th>Sıra</th>
-                                    <th>Görünüş</th>
-                                    <th>Məhsul adı</th>
-                                    <th>Miqdar</th>
-                                    <th>Qiymət</th>
-                                    <th>Məbləğ</th>
-                                    <th>Sifariş saatı</th>
-                                    <th>Gözləmə</th>
-                                    <th>#</th>
-                                </tr>
+                             <tr>
+                                {theadData.map(elm => <th key={elm}>{elm}</th> )}
+                            </tr>
 
                             </thead>
                         )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BsFilter } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Heading from '../../components/heading';
@@ -55,11 +55,11 @@ function Orders() {
                         </tr>
                     </thead>
                     <tbody>
-                        {arr.map(({ id, masa, waiter, situation, price, date }, i) => {
-                            const obj = { masa, waiter, situation, price, date };
+                        {arr.map(({ id, table, waiter, situation, price, date }, i) => {
+                            const obj = { table, waiter, situation, price, date };
                             return <tr key={i} className={situation == "sonlanmayıb" ? "red" : null}>
                                 <td>{i + 1}</td>
-                                {Object.values(obj).map(elm => <td key={elm}>{elm}</td>)}
+                                {Object.values(obj).map((elm, i) => <td key={i}>{elm}</td>)}
                                 <td> <Link to={`/order/${id}`} className={'btn btn-primary'}>bax</Link></td>
                             </tr>
                         })}

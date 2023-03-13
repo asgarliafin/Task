@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Container, Image } from 'react-bootstrap';
-import productData from '../../data/productData';
+import productData from '../../data/products';
 import { Link } from 'react-router-dom';
 import nextId from "react-id-generator";
 import { useDispatch, useSelector } from 'react-redux';
-import './_createOrder.scss';
 import Heading from '../../components/heading';
+import theadData from '../../data/order/theadData.json';
+import './_createOrder.scss';
 
 
 function CreateOrder() {
@@ -68,7 +69,7 @@ function CreateOrder() {
         let id = nextId();
         const obj = {
             id: id,
-            masa: table,
+            table: table,
             waiter: waiter,
             situation: "sonlanmayıb",
             price: total,
@@ -134,15 +135,7 @@ function CreateOrder() {
                     open && <table className={"table my-4"}>
                         <thead>
                             <tr>
-                                <th>Sıra</th>
-                                <th>Görünüş</th>
-                                <th>Məhsul adı</th>
-                                <th>Miqdar</th>
-                                <th>Qiymət</th>
-                                <th>Məbləğ</th>
-                                <th>Sifariş saatı</th>
-                                <th>Gözləmə</th>
-                                <th>#</th>
+                                {theadData.map(elm => <th key={elm}>{elm}</th> )}
                             </tr>
                         </thead>
                         <tbody>

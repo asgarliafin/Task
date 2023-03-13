@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
-import waiters from '../../data/waiters.json';
+import waiters from '../../data/waiters/waiters.json';
 import Heading from '../heading';
 import './_team.scss';
 

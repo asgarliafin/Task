@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import './heading.scss';
+import './_heading.scss';
 
 const Heading = ({text}) => {
   return (
