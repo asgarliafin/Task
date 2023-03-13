@@ -6,10 +6,10 @@ import Banner from "../../components/banner";
 import Heading from "../../components/heading";
 import productData from "../../data/products";
 import theadData from '../../data/order/theadData.json';
+
 import './_order.scss';
 
 function Order() {
-
     const { data } = useSelector(state => state);
     const { id } = useParams();
     const [list, setList] = useState([]);
@@ -27,9 +27,11 @@ function Order() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        
         let filtered = data.find(item => item.id == id);
-        setActive(filtered);
+        console.log(filtered);
         setList(filtered.list && filtered.list);
+        setActive(filtered);
         setTotal(filtered.price);
         setWaiter(filtered.waiter);
         setTable(filtered.table);
@@ -184,9 +186,9 @@ function Order() {
                     <table className={"table my-5"}>
                         {list.length > 0 && (
                             <thead>
-                             <tr>
-                                {theadData.map(elm => <th key={elm}>{elm}</th> )}
-                            </tr>
+                                <tr>
+                                    {theadData.map(elm => <th key={elm}>{elm}</th>)}
+                                </tr>
 
                             </thead>
                         )}

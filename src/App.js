@@ -4,18 +4,19 @@ import Orders from './pages/orders';
 import About from './pages/about/about';
 import CreateOrder from './pages/createOrder/createOrder';
 import Order from './pages/order/order';
+import NotFound from './pages/NotFound';
 
 function App() {
 
   return (
     <div className="App">
       <Header/>
-      <Routes>.
-        <Route path={''} element={<About/>} />
-        <Route path={'/orders'} element={<Orders/>} />
-        <Route path={'/create'} element={<CreateOrder/>} />
+      <Routes>
+        <Route path={''} exact element={<About/>} />
+        <Route path={'/orders'} exact element={<Orders/>} />
+        <Route path={'/create'} exact element={<CreateOrder/>} />
         <Route path={'/order/:id'} exact element={<Order/>}/>
-        {/* <Route path='*' element={"NotFound"}/> */}
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
 
     </div>
