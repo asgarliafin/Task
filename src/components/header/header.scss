@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+#header {
+    padding-block: 25px;
+
+    .list {
+        .orders {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e7272d;
+        }
+
+        .btn-order {
+            background: #e7272d;
+            padding: 12px 27px;
+            color: #FFFFFF;
+            border-radius: 36px;
+        }
+    }
+};

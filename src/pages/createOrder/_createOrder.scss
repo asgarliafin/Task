@@ -1,0 +1,38 @@
+.list-wr {
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    select,
+    input {
+        background: #36304a;
+        color: #FFFFFF;
+        border-radius: 4px;
+        padding: 10px 15px;
+        width: 75%;
+        height: 45px !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+
+    button {
+        margin: 0 !important;
+        padding-block: 10px;
+    }
+}
+
+#create-order {
+
+    h4 {
+        margin-bottom: 0 !important;
+        color: #36304a;
+    }
+
+
+}

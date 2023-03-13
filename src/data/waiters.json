@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "Harvey Dent",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team4.png"
+    },
+    {
+        "name" : "Sofia Richie",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team3.png"
+    },
+    {
+        "name" : "Emilia Clarke",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team1.png"
+    },
+    {
+        "name" : "Sam Claflin",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team2.png"
+    },
+    {
+        "name" : "Ivan Rakitic",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team5.png"
+    },
+    {
+        "name" : "Andre Rush",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team4.png"
+    },
+    {
+        "name" : "Arnolde jony",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team8.png"
+    },
+    {
+        "name" : "Raoin Hoice",
+        "role" : "Waiter",
+        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team7.png"
+    }
+]

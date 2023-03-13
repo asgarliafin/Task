@@ -1,0 +1,30 @@
+#order {
+
+    .order-block{
+        display: flex;
+        column-gap: 20px;
+    }
+
+    select, input{
+        background: #36304a;
+        color: #FFFFFF;
+        border-radius: 4px;
+        padding: 10px 15px;
+        width: auto;
+        height: 45px !important;
+    }
+
+    h4{
+        margin-bottom: 0 !important;
+        color: #36304a;
+    }
+
+    h5{
+        margin-left: 10px;
+        color: #36304a;
+    }
+    button{
+        margin-left: auto;
+        padding-block: 10px;
+    }
+}
