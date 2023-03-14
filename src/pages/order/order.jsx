@@ -6,7 +6,7 @@ import Banner from "../../components/banner";
 import Heading from "../../components/heading";
 import productData from "../../data/products";
 import theadData from '../../data/order/theadData.json';
-
+import { useNavigate } from "react-router-dom";
 import './_order.scss';
 
 function Order() {
@@ -25,23 +25,29 @@ function Order() {
     const [disabled, setDisabled] = useState(true);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        
+
         let filtered = data.find(item => item.id == id);
-        console.log(filtered);
-        setList(filtered.list && filtered.list);
-        setActive(filtered);
-        setTotal(filtered.price);
-        setWaiter(filtered.waiter);
-        setTable(filtered.table);
-        setSituation(filtered.situation);
-        setSave(false);
-        filtered.situation == "sonlanmayıb" && setDisabled(false);
+
+        if (filtered != undefined) {
+            setList(filtered.list);
+            setActive(filtered);
+            setTotal(filtered.price);
+            setWaiter(filtered.waiter);
+            setTable(filtered.table);
+            setSituation(filtered.situation);
+            setSave(false);
+            filtered.situation == "sonlanmayıb" && setDisabled(false)
+        }
+        else {
+            navigate('/*')
+        }
     }, [])
 
     function handleDelete(index, par) {
-        let filteredList = list.filter((item, i) => i !== index);
+        let filteredList = list && list.filter((item, i) => i !== index);
         setList(filteredList);
         setTotal(total - par);
         list.length <= 1 && setTotal(0);
