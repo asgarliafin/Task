@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Image } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Banner from "../../components/banner";
 import Heading from "../../components/heading";
 import productData from "../../data/products";
-import theadData from '../../data/order/theadData.json';
 import { useNavigate } from "react-router-dom";
+import Table from "../../components/table";
 import './_order.scss';
 
 function Order() {
@@ -29,9 +29,9 @@ function Order() {
 
     useEffect(() => {
 
-        let filtered = data.find(item => item.id == id);
+        let filtered = data.find(item => item.id === id);
 
-        if (filtered != undefined) {
+        if (filtered !== undefined) {
             setList(filtered.list);
             setActive(filtered);
             setTotal(filtered.price);
@@ -39,7 +39,7 @@ function Order() {
             setTable(filtered.table);
             setSituation(filtered.situation);
             setSave(false);
-            filtered.situation == "sonlanmayıb" && setDisabled(false)
+            filtered.situation === "sonlanmayıb" && setDisabled(false)
         }
         else {
             navigate('/*')
@@ -58,19 +58,19 @@ function Order() {
     };
 
     function handleBack(index) {
-        let maping = list.map((item, i) => i == index ? { ...item, back: true } : item)
+        let maping = list.map((item, i) => i === index ? { ...item, back: true } : item)
         setList(maping);
     };
 
     function handleAdd() {
-        let lengthArr = list.filter(item => item.name == value);
-        let filteredItem = productData.find(item => item.name == value);
+        let lengthArr = list.filter(item => item.name === value);
+        let filteredItem = productData.find(item => item.name === value);
         let total = filteredItem.price * quantity;
         let time = new Date();
         time = time.getHours() + ":" + time.getMinutes();
         if (lengthArr.length > 0) {
             let copyFilter = [...list];
-            let mapArr = copyFilter.map(item => item.name == value ? {
+            let mapArr = copyFilter.map(item => item.name === value ? {
                 ...item,
                 total: item.total + total,
                 time: time,
@@ -78,7 +78,7 @@ function Order() {
             } : item)
             setList(mapArr);
         }
-        else if (lengthArr.length == 0) {
+        else if (lengthArr.length === 0) {
             let info = {
                 name: filteredItem.name,
                 img: filteredItem.img,
@@ -160,7 +160,7 @@ function Order() {
             <Heading text={"Order Page"} />
             <div className="order-block mt-5">
 
-                {!save && !end && situation == "sonlanmayıb" && <div className="d-flex">
+                {!save && !end && situation === "sonlanmayıb" && <div className="d-flex">
 
 
                     <div className="list-wr w-100">
@@ -189,7 +189,7 @@ function Order() {
             {
                 !save && !end && <>
                     <br />
-                    <table className={"table my-5"}>
+                    {/* <table className={"table my-5"}>
                         {list.length > 0 && (
                             <thead>
                                 <tr>
@@ -216,15 +216,17 @@ function Order() {
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </table> */}
 
                     <div className={'d-flex justify-content-between align-items-center mb-5'}>
-                        {list.length > 0 && situation == "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-success'} onClick={handleSave}>Save</Link>}
-                        {list.length > 0 && situation == "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-primary'} onClick={handleEnd}>Sifarişi sonlandırın</Link>}
-                        {situation == "sonlanmayıb" && !end && <Link to={"/orders"} className={'btn btn-danger'} onClick={handleCancel}>Sifarişi Ləğv et</Link>}
+                        {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-success'} onClick={handleSave}>Save</Link>}
+                        {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-primary'} onClick={handleEnd}>Sifarişi sonlandırın</Link>}
+                        {situation === "sonlanmayıb" && !end && <Link to={"/orders"} className={'btn btn-danger'} onClick={handleCancel}>Sifarişi Ləğv et</Link>}
                     </div>
                 </>
             }
+
+            <Table list={list} handleBack={handleBack} handleDelete={handleDelete} disabled={disabled} save={save} end={end}/>
 
         </Container>
     </div>)

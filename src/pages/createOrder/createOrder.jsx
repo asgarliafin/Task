@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Button, Container, Image } from 'react-bootstrap';
-import productData from '../../data/products';
+import { Button, Container } from 'react-bootstrap';
+import products from '../../data/products';
 import { Link } from 'react-router-dom';
 import nextId from "react-id-generator";
 import { useDispatch, useSelector } from 'react-redux';
 import Heading from '../../components/heading';
-import theadData from '../../data/order/theadData.json';
+import Table from '../../components/table';
 import './_createOrder.scss';
 
 
 function CreateOrder() {
     const { tables, waiters } = useSelector(state => state);
     const [quantity, setQuantity] = useState(1);
-    const [value, setValue] = useState(productData[0].name);
+    const [value, setValue] = useState(products[0].name);
     const [list, setList] = useState([]);
     const [total, setTotal] = useState(0);
     const [waiter, setWaiter] = useState(waiters[0].name);
@@ -26,14 +26,14 @@ function CreateOrder() {
 
     function handleAdd() {
         setOpen(true)
-        let lengthArr = list.filter(item => item.name == value);
-        let filteredItem = productData.filter(item => item.name == value)[0];
+        let lengthArr = list.filter(item => item.name === value);
+        let filteredItem = products.filter(item => item.name === value)[0];
         let total = filteredItem.price * quantity;
         let time = new Date();
         time = time.getHours() + ":" + time.getMinutes();
         if (lengthArr.length > 0) {
             let copyFilter = [...list];
-            let mapArr = copyFilter.map(item => item.name == value ? {
+            let mapArr = copyFilter.map(item => item.name === value ? {
                 ...item,
                 total: item.total + total,
                 time: time,
@@ -41,7 +41,7 @@ function CreateOrder() {
             } : item)
             setList(mapArr);
         }
-        else if (lengthArr.length == 0) {
+        else if (lengthArr.length === 0) {
             let info = {
                 name: filteredItem.name,
                 img: filteredItem.img,
@@ -84,7 +84,7 @@ function CreateOrder() {
     };
 
     function handleBack(index) {
-        let maping = list.map((item, i) => i == index ? { ...item, back: true } : item)
+        let maping = list.map((item, i) => i === index ? { ...item, back: true } : item)
         setList(maping);
     }
 
@@ -116,7 +116,7 @@ function CreateOrder() {
                     <label htmlFor="">
 
                         <h4>Məhsul: </h4>   <select name="" id="" onChange={handleChange}>
-                            {productData.map(({ name, price }, i) => (
+                            {products.map(({ name, price }, i) => (
                                 <option value={name} key={i}>{name}: {price} AZN</option>
                             ))}
                         </select>
@@ -130,40 +130,12 @@ function CreateOrder() {
                     <Button variant={'success'} onClick={handleAdd}>Əlavə et</Button>
                 </div>
 
+                <Table open={open} list={list} handleBack={handleBack} handleDelete={handleDelete} />
 
-                {
-                    open && <table className={"table my-4"}>
-                        <thead>
-                            <tr>
-                                {theadData.map(elm => <th key={elm}>{elm}</th> )}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {list.map((item, i) => (<tr key={i}>
-                                <td>{i + 1}</td>
-                                <td><Image src={item.img} width={50} height={50} className={'rounded'} /></td>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.price}</td>
-                                <td>{item.total}</td>
-                                <td>{item.time}</td>
-                                <td>{item.wait}</td>
-                                <td><Button variant={'success'} onClick={e => handleBack(i)}>{item.back ? "verildi" : "ver"}</Button></td>
-                                <td><Button variant={"danger"} onClick={e => handleDelete(i, total)}>Sil</Button></td></tr>))}
-                        </tbody>
-
-                    </table>
-                }
-
-                {
-                    list.length > 0 && <div className={'d-flex justify-content-between align-items-center mb-5'}>
-                        <h1>Cəmi qiymət : {total}</h1>
-                        <Link className={'btn btn-primary'} to={"/orders"} onClick={handleCreate}>Sifarişi başlat</Link>
-                    </div>
-                }
-
-
-
+                {list.length > 0 && <div className={'d-flex justify-content-between align-items-center mb-5'}>
+                    <h1>Cəmi qiymət : {total}</h1>
+                    <Link className={'btn btn-primary'} to={"/orders"} onClick={handleCreate}>Sifarişi başlat</Link>
+                </div>}
             </Container>
         </div>
     )

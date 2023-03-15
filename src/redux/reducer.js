@@ -26,8 +26,8 @@ function Reducer(state = intialValue, action) {
 
     function update() {
         let { id, table } = payload;
-        const filtered = state.data.map(item => item.id == id ? payload : item)
-        if (payload.situation == "sonlanıb") {
+        const filtered = state.data.map(item => item.id === id ? payload : item)
+        if (payload.situation === "sonlanıb") {
             let tableArr = filteredTable(table);
             return { ...state, data: filtered, tables: tableArr }
         }
@@ -38,7 +38,7 @@ function Reducer(state = intialValue, action) {
 
     function cancel() {
         let { obj, id } = payload;
-        let mapArr = state.data.map(item => item.id == id ? obj : item);
+        let mapArr = state.data.map(item => item.id === id ? obj : item);
         let tableArr = filteredTable(obj.table);
         return { ...state, data: mapArr, tables: tableArr };
     };
