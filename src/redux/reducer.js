@@ -1,6 +1,7 @@
 import data from "../data/orders";
 import tables from '../data/tables/tables.json';
 import waiters from '../data/waiters/waiters.json';
+import actionTypes from "./actions/actionTypes";
 
 var intialValue = {
     data: data,
@@ -44,9 +45,9 @@ function Reducer(state = intialValue, action) {
     };
 
     switch (type) {
-        case "CREATE": return create();
-        case "UPDATE": return update();
-        case "CANCEL": return cancel();
+        case actionTypes.CREATE: return create();
+        case actionTypes.UPDATE: return update();
+        case actionTypes.CANCEL: return cancel();
         default: return state;
     };
 };

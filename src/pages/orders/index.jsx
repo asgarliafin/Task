@@ -13,9 +13,8 @@ function Orders() {
     const [arr, setArr] = useState(data);
     const [rotate, setRotate] = useState(true);
 
-
     useEffect(() => {
-        let sorting = [...data].sort((a, b) => a.situation == "sonlanmayıb" ? -1 : b.situation == "sonlanıb" ? 1 : 0)
+        let sorting = [...data].sort((a, b) => a.situation == "sonlanmayıb" ? -1 : a.situation == "sonlanıb" ? 0: a.situation == "sonlanıb" ? 0  : 1)
         setArr(sorting);
     }, [])
 
