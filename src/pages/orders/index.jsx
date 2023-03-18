@@ -49,7 +49,7 @@ function Orders() {
                                         <select name="" id="" className={'auto'} onChange={handleSelect}>
                                             {statusData.map(value => <option value={value} key={value}>{value}</option>)}
                                         </select> :
-                                        id === "os5" ? <BsFilter style={{ marginLeft: "5px" }} className={rotate ? "active" : null} /> : name}
+                                        id === "os5" ? <><BsFilter style={{ marginLeft: "5px" }} className={rotate ? "active" : null} /> {name}</> : name}
 
                                 </th>
                             ))}
