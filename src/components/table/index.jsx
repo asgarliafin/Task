@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import theadData from '../../data/order/theadData.json';
+import timing from "../../timing";
 
 function Table({ list, handleBack, handleDelete, disabled, save, end }) {
+    
     return (
         <React.Fragment>
             {(save || end || list.length > 0) && <table id={'table'} className={'table my-5'}>
@@ -13,7 +15,7 @@ function Table({ list, handleBack, handleDelete, disabled, save, end }) {
 
                 </thead>
                 <tbody>
-                    {list.map(({ img, name, quantity, price, total, time, wait, back }, i) => (
+                    {list.map(({ img, name, quantity, price, total, time, wait, back, waitingTime }, i) => (
                         <tr key={i}>
                             <td>{i + 1}</td>
                             <td><Image src={img} width={50} height={50} className={'rounded'} /></td>
@@ -22,7 +24,7 @@ function Table({ list, handleBack, handleDelete, disabled, save, end }) {
                             <td>{price}</td>
                             <td>{total}</td>
                             <td>{time}</td>
-                            <td>{wait}</td>
+                            <td>{timing(waitingTime)}</td>
                             <td><Button variant={'success'} onClick={e => handleBack(i)} disabled={disabled ? disabled : false} >{back ? "verildi" : "ver"}</Button></td>
                             <td><Button variant={'danger'} onClick={e => handleDelete(i, total)} disabled={disabled ? disabled : false}>Sil</Button></td>
                         </tr>

@@ -8,7 +8,6 @@ import productData from "../../data/products";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/table";
 import Create from "../../components/create";
-import timing from "../../timing";
 import actionTypes from "../../redux/actions/actionTypes";
 import './_order.scss';
 
@@ -82,13 +81,14 @@ function Order() {
 
     function handleEnd() {
         let mapingList = list.map(item => item && { ...item, back: true })
+        let time =  (new Date()).toLocaleString("es-CL").replace(",", "");
         const obj = {
             id: id,
             table: table,
             waiter: waiter,
             situation: "sonlanıb",
             price: total,
-            date: timing(),
+            date: time,
             list: mapingList,
             cancel: false
         }
@@ -101,6 +101,7 @@ function Order() {
     };
 
     function handleCancel() {
+        let time =  (new Date()).toLocaleString("es-CL").replace(",", "");
         dispatch({
             type: actionTypes.CANCEL,
             payload: {
@@ -108,7 +109,7 @@ function Order() {
                 obj: {
                     ...active,
                     cancel: true,
-                    date: timing(),
+                    date: time,
                     situation: "ləğv edilmiş"
                 }
             }

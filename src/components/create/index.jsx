@@ -40,49 +40,54 @@ function Create({ propsObj, page }) {
                 total: total,
                 time: time,
                 wait: "0 dəq",
-                back: false
+                back: false,
+                waitingTime: Date.now()
             }
             setList([...list, { ...info }]);
 
         }
         setTotal(prev => prev + total);
         setQuantity(1);
+
     };
 
 
     return (
-        <div className={`list-wr ${page == "order" ? "w-100" : "mt-5"}`} id={'create'}>
-            {page == "createOrder" && <>
-                <label htmlFor="waiters">
-                    <h4>Ofisiant: </h4>
-                    <select name="waiters" id="waiters" onChange={e => setWaiter(e.target.value)}>
-                        {waiters.map((item, i) => (
-                            <option value={item.name} key={i}>{item.name}</option>
-                        ))}
-                    </select>
-                </label>
-                <label htmlFor="tables">
-                    <h4>Masa:</h4>
-                    <select name="tables" id="tables" onChange={e => setTable(e.target.value)}>
-                        {tables.map((item, i) => (
-                            <option value={item} key={i}>{item.toLocaleUpperCase()} </option>
-                        ))}
-                    </select>
-                </label>
-            </>}
-            <label htmlFor="products">
-                <h4>Məhsul: </h4>   <select name="products" id="products" onChange={handleChange}>
-                    {products.map(({ name, price }, i) => (
-                        <option value={name} key={i}>{name}: {price} AZN</option>
-                    ))}
-                </select>
-            </label>
-            <label htmlFor="quantity" >
-                <h4>Miqdar: </h4>
-                <input type="number" name="quantity" id="quantity" min={1} className={`${page == "order" ? "w-100" : null}`} value={quantity} onChange={e => setQuantity(e.target.value)} />
-            </label>
-            <Button variant={'success'} onClick={handleAdd}>Əlavə et</Button>
-        </div>
+        <>
+            {tables.length > 0 ?<div className={`list-wr ${page == "order" ? "w-100" : "mt-5"}`} id={'create'}>
+                    {page == "createOrder" && <>
+                        <label htmlFor="waiters">
+                            <h4>Ofisiant: </h4>
+                            <select name="waiters" id="waiters" onChange={e => setWaiter(e.target.value)}>
+                                {waiters.map((item, i) => (
+                                    <option value={item.name} key={i}>{item.name}</option>
+                                ))}
+                            </select>
+                        </label>
+                        <label htmlFor="tables">
+                            <h4>Masa:</h4>
+                            <select name="tables" id="tables" onChange={e => setTable(e.target.value)}>
+                                {tables.map((item, i) => (
+                                    <option value={item} key={i}>{item.toLocaleUpperCase()} </option>
+                                ))}
+                            </select>
+                        </label>
+                    </>}
+                    <label htmlFor="products">
+                        <h4>Məhsul: </h4>   <select name="products" id="products" onChange={handleChange}>
+                            {products.map(({ name, price }, i) => (
+                                <option value={name} key={i}>{name}: {price} AZN</option>
+                            ))}
+                        </select>
+                    </label>
+                    <label htmlFor="quantity" >
+                        <h4>Miqdar: </h4>
+                        <input type="number" name="quantity" id="quantity" min={1} className={`${page == "order" ? "w-100" : null}`} value={quantity} onChange={e => setQuantity(e.target.value)} />
+                    </label>
+                    <Button variant={'success'} onClick={handleAdd}>Əlavə et</Button>
+                </div> : <h1 style={{textAlign: "center", marginTop: "100px"}}>Hazırda boş masa yoxdur.</h1>
+            }
+        </>
     )
 }
 
