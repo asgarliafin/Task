@@ -13,10 +13,7 @@ const Hero = () => {
 
     return (
         <div id={'hero'}>
-            <div className='hero-img'>
-                <Image src={Img} />
-            </div>
-            <div className={'hero-info'}>
+            <div className={'hero-container'}>
                 <Row className={'justify-content-between'}>
                     <Col lg={6}>
                         <div className='left d-flex'>
