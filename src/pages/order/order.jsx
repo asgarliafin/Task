@@ -133,7 +133,7 @@ function Order() {
             {!save && !end && <>
                 <br />
                 <div className={'d-flex justify-content-between align-items-center mb-5'}>
-                    {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-success'} onClick={handleSave}>Save</Link>}
+                    {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-success'} onClick={handleSave}>Yadda saxla</Link>}
                     {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-primary'} onClick={handleEnd}>Sifarişi sonlandırın</Link>}
                     {situation === "sonlanmayıb" && !end && <Link to={"/orders"} className={'btn btn-danger'} onClick={handleCancel}>Sifarişi Ləğv et</Link>}
                 </div>

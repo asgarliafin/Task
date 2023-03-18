@@ -14,12 +14,14 @@ function Orders() {
     const [rotate, setRotate] = useState(true);
 
     useEffect(() => {
-        let sorting = [...data].sort((a, b) => a.situation == "sonlanmayıb" ? -1 : a.situation == "sonlanıb" ? 0: a.situation == "sonlanıb" ? 0  : 1)
+        let sorting = [...data].sort((a, b) => a.situation == "sonlanmayıb" ?
+         -1 : a.situation == "sonlanıb" ?
+          0 : a.situation == "sonlanıb" ? 0 : 1)
         setArr(sorting);
     }, [])
 
     function handleSelect(event) {
-        if (event.target.value != "Hamsı") {
+        if (event.target.value != "STATUS") {
             let filteredArr = data.filter(item => item.situation == event.target.value);
             setArr(filteredArr);
         }
@@ -43,12 +45,12 @@ function Orders() {
                         <tr>
                             {theadData.map(({ name, id }) => (
                                 <th key={id} onClick={id === "os5" ? handleRotate : null} className={id == "os5" && rotate ? "active" : null}>
-                                    {name}
-                                    {id === "os4" &&
+                                    {id === "os4" ?
                                         <select name="" id="" className={'auto'} onChange={handleSelect}>
                                             {statusData.map(value => <option value={value} key={value}>{value}</option>)}
-                                        </select>}
-                                    {id === "os5" && <BsFilter style={{ marginLeft: "5px" }} className={rotate ? "active" : null} />}
+                                        </select> :
+                                        id === "os5" ? <BsFilter style={{ marginLeft: "5px" }} className={rotate ? "active" : null} /> : name}
+
                                 </th>
                             ))}
                         </tr>

@@ -2,41 +2,41 @@
     {
         "name" : "Harvey Dent",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team4.png"
+        "img" : "/images/waiters/harvey-dent.png"
     },
     {
         "name" : "Sofia Richie",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team3.png"
+        "img" : "/images/waiters/sofia-richie.png"
     },
     {
         "name" : "Emilia Clarke",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team1.png"
+        "img" : "/images/waiters/sofia-richie.png"
     },
     {
         "name" : "Sam Claflin",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team2.png"
+        "img" : "/images/waiters/sam-claflin.png"
     },
     {
         "name" : "Ivan Rakitic",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team5.png"
+        "img" : "/images/waiters/ivan-rakitic.png"
     },
     {
         "name" : "Andre Rush",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team4.png"
+        "img" : "/images/waiters/andre-rush.png"
     },
     {
         "name" : "Arnolde jony",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team8.png"
+        "img" : "/images/waiters/arnolde-jony.png"
     },
     {
         "name" : "Raoin Hoice",
         "role" : "Waiter",
-        "img" : "https://demo.themewinter.com/wp/gloreya/wp-content/uploads/2019/10/team7.png"
+        "img" : "/images/waiters/raoin-hoice.png"
     }
 ]
