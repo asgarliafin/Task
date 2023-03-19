@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
-import Img from '../../assets/images/hero/hero.svg';
-import AvatartImg from '../../assets/images/hero/avatar.svg';
+import Img from 'assets/images/hero/hero.svg';
+import AvatartImg from 'assets/images/hero/avatar.svg';
 import { FiMapPin } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import './_hero.scss';

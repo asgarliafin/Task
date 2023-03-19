@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import products from '../../data/products';
 import { Link } from 'react-router-dom';
-import nextId from "react-id-generator";
 import { useDispatch, useSelector } from 'react-redux';
-import Heading from '../../components/heading';
-import Table from '../../components/table';
-import Create from '../../components/create';
-import actionTypes from '../../redux/actions/actionTypes';
+import { Table, Heading, Create } from 'components';
+import nextId from "react-id-generator";
+import products from 'data/products';
+import actionTypes from 'redux/actions/actionTypes';
 import './_createOrder.scss';
-
 
 function CreateOrder() {
     const { tables, waiters } = useSelector(state => state);

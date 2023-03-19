@@ -1,7 +1,7 @@
-import data from "../data/orders";
-import tables from '../data/tables/tables.json';
-import waiters from '../data/waiters/waiters.json';
-import actionTypes from "./actions/actionTypes";
+import data from "data/orders";
+import tables from 'data/tables/tables.json';
+import waiters from 'data/waiters/waiters.json';
+import actionTypes from "redux/actions/actionTypes";
 
 var intialValue = {
     data: data,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
-import Heading from '../heading';
-import products from '../../data/products';
+import { Heading } from 'components';
+import products from 'data/products';
 import './_menu.scss';
 
 function Menu() {

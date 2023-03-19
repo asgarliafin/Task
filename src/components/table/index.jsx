@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Image } from 'react-bootstrap';
-import theadData from '../../data/order/theadData.json';
-import timing from "../../timing";
+import theadData from 'data/order/theadData.json';
+import timing from "timing";
 
 function Table({ list, handleBack, handleDelete, disabled, save, end }) {
-    
+
     return (
         <React.Fragment>
             {(save || end || list.length > 0) && <table id={'table'} className={'table my-5'}>

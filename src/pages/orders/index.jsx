@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { BsFilter } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import Heading from '../../components/heading';
-import theadData from '../../data/orders/theadData';
-import statusData from '../../data/orders/statusData.json';
+import { Heading } from 'components';
+import theadData from 'data/orders/theadData';
+import statusData from 'data/orders/statusData.json';
+
 
 function Orders() {
 
@@ -15,8 +16,8 @@ function Orders() {
 
     useEffect(() => {
         let sorting = [...data].sort((a, b) => a.situation == "sonlanmayıb" ?
-         -1 : a.situation == "sonlanıb" ?
-          0 : a.situation == "sonlanıb" ? 0 : 1)
+            -1 : a.situation == "sonlanıb" ?
+                0 : a.situation == "sonlanıb" ? 0 : 1)
         setArr(sorting);
     }, [])
 

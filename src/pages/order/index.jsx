@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import Banner from "../../components/banner";
-import Heading from "../../components/heading";
-import productData from "../../data/products";
-import { useNavigate } from "react-router-dom";
-import Table from "../../components/table";
-import Create from "../../components/create";
-import actionTypes from "../../redux/actions/actionTypes";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { Table, Create, Banner, Heading } from "components";
+import products from "data/products";
+import actionTypes from 'redux/actions/actionTypes';
 import './_order.scss';
 
 function Order() {
@@ -16,7 +12,7 @@ function Order() {
     const { id } = useParams();
     const [list, setList] = useState([]);
     const [active, setActive] = useState();
-    const [value, setValue] = useState(productData[0].name);
+    const [value, setValue] = useState(products[0].name);
     const [total, setTotal] = useState(0);
     const [waiter, setWaiter] = useState();
     const [table, setTable] = useState();
@@ -61,7 +57,7 @@ function Order() {
     };
 
     function handleSave() {
-        const obj = {
+        const payload = {
             id: id,
             table: table,
             waiter: waiter,
@@ -71,21 +67,17 @@ function Order() {
             list: list,
             cancel: false
         }
-        dispatch({
-            type: actionTypes.UPDATE,
-            payload: obj
-        });
-
+        dispatch({type : actionTypes.UPDATE, payload});
         setSave(true);
     };
 
-    function handleEnd() {
+    function handleComplete() {
         let mapingList = list.map(item => item && { ...item, back: true })
-        let time =  (new Date()).toLocaleString("es-CL").replace(",", "");
-        const obj = {
-            id: id,
-            table: table,
-            waiter: waiter,
+        let time = (new Date()).toLocaleString("es-CL").replace(",", "");
+        const payload = {
+            id : id, 
+            table : id, 
+            waiter : waiter,
             situation: "sonlanıb",
             price: total,
             date: time,
@@ -93,26 +85,27 @@ function Order() {
             cancel: false
         }
         dispatch({
-            type: actionTypes.UPDATE,
-            payload: obj
+            type : actionTypes.UPDATE,
+            payload : payload
         });
         setEnd(true);
         setSave(false);
     };
 
     function handleCancel() {
-        let time =  (new Date()).toLocaleString("es-CL").replace(",", "");
-        dispatch({
-            type: actionTypes.CANCEL,
-            payload: {
-                id: id,
-                obj: {
-                    ...active,
-                    cancel: true,
-                    date: time,
-                    situation: "ləğv edilmiş"
-                }
+        let time = (new Date()).toLocaleString("es-CL").replace(",", "");
+        const payload = {
+            id: id,
+            obj: {
+                ...active,
+                cancel: true,
+                date: time,
+                situation: "ləğv edilmiş"
             }
+        }
+        dispatch({
+            type : actionTypes.CANCEL,
+            payload : payload
         })
     };
 
@@ -130,12 +123,11 @@ function Order() {
 
             </div>
 
-
             {!save && !end && <>
                 <br />
                 <div className={'d-flex justify-content-between align-items-center mb-5'}>
                     {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-success'} onClick={handleSave}>Yadda saxla</Link>}
-                    {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-primary'} onClick={handleEnd}>Sifarişi sonlandırın</Link>}
+                    {list.length > 0 && situation === "sonlanmayıb" && <Link to={'/orders'} className={'btn btn-primary'} onClick={handleComplete}>Sifarişi sonlandırın</Link>}
                     {situation === "sonlanmayıb" && !end && <Link to={"/orders"} className={'btn btn-danger'} onClick={handleCancel}>Sifarişi Ləğv et</Link>}
                 </div>
             </>}
