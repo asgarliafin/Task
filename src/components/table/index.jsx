@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import theadData from 'data/order/theadData.json';
 import timing from "timing";
+import './_table.scss';
 
 function Table({ list, handleBack, handleDelete, disabled, save, end }) {
 
@@ -28,7 +29,7 @@ function Table({ list, handleBack, handleDelete, disabled, save, end }) {
                             <td><Button variant={'success'} onClick={e => handleBack(i)} disabled={disabled ? disabled : false} >{back ? "verildi" : "ver"}</Button></td>
                             <td><Button variant={'danger'} onClick={e => handleDelete(i, total)} disabled={disabled ? disabled : false}>Sil</Button></td>
                         </tr>
-                    ))}
+                      ))}
                 </tbody>
             </table>}
         </React.Fragment>

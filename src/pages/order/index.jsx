@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Table, Create, Banner, Heading } from "components";
 import products from "data/products";
-import actionTypes from 'redux/actions/actionTypes';
+import updateAction from "redux/actions/updateAction";
+import cancelAction from "redux/actions/cancelAction";
 import './_order.scss';
+
 
 function Order() {
     const { data } = useSelector(state => state);
@@ -57,7 +59,7 @@ function Order() {
     };
 
     function handleSave() {
-        const payload = {
+        const obj = {
             id: id,
             table: table,
             waiter: waiter,
@@ -67,16 +69,16 @@ function Order() {
             list: list,
             cancel: false
         }
-        dispatch({type : actionTypes.UPDATE, payload});
+        dispatch(updateAction(obj));
         setSave(true);
     };
 
     function handleComplete() {
         let mapingList = list.map(item => item && { ...item, back: true })
         let time = (new Date()).toLocaleString("es-CL").replace(",", "");
-        const payload = {
+        const obj = {
             id : id, 
-            table : id, 
+            table : table, 
             waiter : waiter,
             situation: "sonlanıb",
             price: total,
@@ -84,10 +86,7 @@ function Order() {
             list: mapingList,
             cancel: false
         }
-        dispatch({
-            type : actionTypes.UPDATE,
-            payload : payload
-        });
+        dispatch(updateAction(obj));
         setEnd(true);
         setSave(false);
     };
@@ -103,10 +102,7 @@ function Order() {
                 situation: "ləğv edilmiş"
             }
         }
-        dispatch({
-            type : actionTypes.CANCEL,
-            payload : payload
-        })
+        dispatch(cancelAction(payload))
     };
 
 

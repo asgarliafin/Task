@@ -5,17 +5,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Table, Heading, Create } from 'components';
 import nextId from "react-id-generator";
 import products from 'data/products';
-import actionTypes from 'redux/actions/actionTypes';
+import createAction from 'redux/actions/createAction';
 import './_createOrder.scss';
 
 function CreateOrder() {
     const { tables, waiters } = useSelector(state => state);
+
     const [value, setValue] = useState(products[0].name);
     const [list, setList] = useState([]);
     const [total, setTotal] = useState(0);
     const [waiter, setWaiter] = useState(waiters[0].name);
     const [table, setTable] = useState(tables[0]);
     const [open, setOpen] = useState(false);
+    
     const dispatch = useDispatch();
 
     function handleDelete(index, par) {
@@ -36,10 +38,7 @@ function CreateOrder() {
             list: list,
             cancel: false
         }
-        dispatch({
-            type: actionTypes.CREATE,
-            payload: obj
-        })
+        dispatch(createAction(obj));
     };
 
     function handleBack(index) {
